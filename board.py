@@ -6,13 +6,13 @@ from typing import List
 
 # CONSTANTS
 RED = 'R'
-BLUE = 'B'
+YELLOW = 'Y'
 EMPTY = ''
 
 
 class Board:
     """
-    An nxm rectangular grid, which includes red, blue or empty cells.
+    An nxm rectangular grid, which includes red, yellow or empty cells.
     """
     # Private Attributes:
     # _n
