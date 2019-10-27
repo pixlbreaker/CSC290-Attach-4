@@ -1,6 +1,6 @@
 """
 === Module Description ===
-This module contains the class that creates and edits the attach 4 board.
+This module contains the class that creates and edits the attach-4 board.
 """
 from typing import List
 
@@ -10,7 +10,7 @@ BLUE = 'B'
 EMPTY = ''
 
 
-class Attach4Board:
+class Board:
     """
     An nxm rectangular grid, which includes red, blue or empty cells.
     """
@@ -27,7 +27,7 @@ class Attach4Board:
 
     def __init__(self, n, m):
         """
-        Attach4Board with a grid of dimensions nxm and all cells
+        Board with a grid of dimensions nxm and all cells
         initialized as EMPTY
 
         Note:
