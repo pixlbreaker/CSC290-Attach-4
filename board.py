@@ -3,11 +3,12 @@
 This module contains the class that creates and edits the attach-4 board.
 """
 from typing import List
+import random
 
 # CONSTANTS
 RED = 'R'
 YELLOW = 'Y'
-EMPTY = ''
+EMPTY = ' '
 
 
 class Board:
@@ -81,7 +82,7 @@ class Board:
             for row in range(self._n):
                 piece_colour = self._grid[row][column]
                 if piece_colour != EMPTY:  # Is a coloured tile
-                    if self._check_connected(piece_colour, column, row, -1, -1):
+                    if self._check_connected(piece_colour, column, row, -1, 1):
                         return piece_colour
                     if self._check_connected(piece_colour, column, row, 0, 1):
                         return piece_colour
@@ -98,7 +99,19 @@ class Board:
         This is a private method that returns true iff a tile with given colour
         has a connection in dx, dy of 4 pieces
         """
-        pass
+        count = 0
+        while self.is_valid_cell(row, column):
+
+            if count >= 4:
+                return True
+            elif self._grid[row][column] != colour:
+                return False
+            # Increment
+            count += 1
+            row += dy
+            column += dx
+
+        return count >= 4  # There is no connection
 
     def is_board_full(self) -> bool:
         """
@@ -128,4 +141,15 @@ class Board:
         Returns the grid representation of the board
         """
         return self._grid
+
+    def __str__(self) -> str:
+        """
+        Returns the string representation of the board
+        """
+        final = ""
+        for line in self.get_board():
+            final += "|"
+            final += "|".join(line)
+            final += "|\n"
+        return final
 
