@@ -33,7 +33,7 @@ class Board:
     _m: int
     _grid: List[List]
 
-    def __init__(self, n: int, m: int):
+    def __init__(self, height: int, width: int):
         """
         Board with a grid of dimensions nxm and all cells
         initialized as EMPTY
@@ -42,15 +42,15 @@ class Board:
             Grid symbols are represented as letters defined by RED or BLUE
             The empty space is represented as EMPTY
         """
-        self._n = n
-        self._m = m
+        self._n = height
+        self._m = width
         self._grid = []
         for height in range(self._n):
             self._grid.append([])
             for width in range(self._m):
                 self._grid[height].append(EMPTY)
 
-    def drop_piece(self, col: int, colour: str) -> bool:
+    def drop_piece(self, colour: str, column: int) -> bool:
         """
         Returns true if the piece is dropped in the given column.
         Returns false if the piece cannot be dropped.
@@ -60,11 +60,11 @@ class Board:
             most available row in the given column.
             If the entire column is already full the drop cannot occur.
         """
-        if self._grid[0][col] != EMPTY:  # Check if the column is full
+        if self._grid[0][column] != EMPTY:  # Check if the column is full
             return False
         for row in range(self._n-1, -1, -1):
-            if self._grid[row][col] == EMPTY:
-                self._grid[row][col] = colour  # The piece is placed
+            if self._grid[row][column] == EMPTY:
+                self._grid[row][column] = colour  # The piece is placed
                 return True
 
         return False  # If no piece can be dropped
@@ -73,21 +73,26 @@ class Board:
         """
         Returns the colour of the tile that contains a diagonal, vertical or a
         horizontal linear combination with 4 or more pieces of the same color.
+
+        Note:
+            If there is no connection then EMPTY is returned.
         """
-        for col in range(self._m):
+        for column in range(self._m):
             for row in range(self._n):
-                piece_colour = self._grid[row][col]
-                if piece_colour != EMPTY:
-                    if self._check_connected(piece_colour, col, row, -1, -1):
+                piece_colour = self._grid[row][column]
+                if piece_colour != EMPTY:  # Is a coloured tile
+                    if self._check_connected(piece_colour, column, row, -1, -1):
                         return piece_colour
-                    if self._check_connected(piece_colour, col, row, 0, 1):
+                    if self._check_connected(piece_colour, column, row, 0, 1):
                         return piece_colour
-                    if self._check_connected(piece_colour, col, row, 1, 1):
+                    if self._check_connected(piece_colour, column, row, 1, 1):
                         return piece_colour
-                    if self._check_connected(piece_colour, col, row, 1, 0):
+                    if self._check_connected(piece_colour, column, row, 1, 0):
                         return piece_colour
 
-    def _check_connected(self, colour: str, col: int,
+        return EMPTY  # There is no connection
+
+    def _check_connected(self, colour: str, column: int,
                          row: int, dx: int, dy: int) -> bool:
         """
         This is a private method that returns true iff a tile with given colour
@@ -99,24 +104,24 @@ class Board:
         """
         Returns true iff there are no EMPTY cells in the grid
         """
-        for col in range(self._m):
-            if self._grid[0][col] == EMPTY: # Only check if the top row is EMPTY
+        for column in range(self._m):
+            if self._grid[0][column] == EMPTY:  # Check if the top row is EMPTY
                 return False
         return True
 
-    def is_valid_cell(self, row: int, col: int):
+    def is_valid_cell(self, row: int, column: int):
         """
-        Return true iff the (row,col) are in the bounds of the nxm dimension
+        Return true iff the (row,column) are in the bounds of the nxm dimension
         """
-        if 0 <= row < self._n and 0 <= col < self._m:
+        if 0 <= row < self._n and 0 <= column < self._m:
             return True
         return False
 
-    def get_piece(self, row: int, col: int) -> str:
+    def get_piece(self, row: int, column: int) -> str:
         """
         Returns the piece that the grid contains at the given row, column
         """
-        return self._grid[row][col]
+        return self._grid[row][column]
 
     def get_board(self) -> List[List]:
         """
