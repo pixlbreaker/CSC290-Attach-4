@@ -2,7 +2,7 @@
 === Module description ===
 This module's job is to test the functionality's logic (testing
 the if the difficulty levels are effective) and that it does not
-break (testing various error conditions).  
+break (testing various error conditions).
 """
 # Import classes from project files
 # uncomment later
@@ -27,15 +27,15 @@ class Tester(unittest.TestCase):
 
     # need to prefix test functions with "test" so that they run during when invoking unitest
     def test_easy_vs_hard(self):
-        """ Simulate a game played between the Easy AI difficulty and 
+        """ Simulate a game played between the Easy AI difficulty and
         the hard AI difficulty level and test whether hard wins."""
         # self.set_up_game_env()
 
         # TODO
         return None
-    
+
     def test_bad_user_input(self):
-        """ Simulate a game played between the Easy AI difficulty and 
+        """ Simulate a game played between the Easy AI difficulty and
         the hard AI difficulty level and test whether hard wins."""
         # self.set_up_game_env()
 
@@ -44,6 +44,26 @@ class Tester(unittest.TestCase):
         return None
 
     # add more test cases during the development of the program as needed below ...
+
+    def test_random_alternation(self):
+        """- Added by Tomasz (Change if you want)
+        Random alternation test of board.py, will end once a colour has won
+        """
+        from board import Board, RED, YELLOW, EMPTY
+        import random
+        random.seed(0)  # If you change the seed, change the return comparison
+        board = Board(6, 7)
+        red = True
+        while (not board.is_board_full() and board.is_connected() == EMPTY):
+            drop = board.drop_piece(RED if red else YELLOW, random.randint(0, 6))
+            if (drop):
+                red = not red
+        return board.get_board() == [[' ', ' ', ' ', ' ', ' ', ' ', ' '],
+                                     [' ', ' ', ' ', 'R', ' ', ' ', 'R'],
+                                     [' ', ' ', 'R', 'R', ' ', ' ', 'R'],
+                                     [' ', 'Y', 'Y', 'Y', 'R', ' ', 'Y'],
+                                     ['Y', 'Y', 'Y', 'Y', 'R', ' ', 'R'],
+                                     ['R', 'Y', 'Y', 'Y', 'R', ' ', 'R']]
 
 
 if __name__ == "__main__":
