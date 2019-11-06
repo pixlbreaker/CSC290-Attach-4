@@ -27,3 +27,9 @@ class Player:
         as a Tuple or None if the player cannot make a move.
         """
         pass
+
+    def getColour(self) -> str:
+        """
+        Returns the colour of this player's discs.
+        """
+        pass
