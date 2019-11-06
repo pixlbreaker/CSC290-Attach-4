@@ -34,3 +34,9 @@ class PlayerHuman():
 
         """
         self._game_board.drop_piece(self.colour, column)
+
+    def get_colour(self) -> str:
+        """
+        Returns the colour of this player's discs.
+        """
+        return self.colour

@@ -28,7 +28,7 @@ class Player:
         """
         pass
 
-    def getColour(self) -> str:
+    def get_colour(self) -> str:
         """
         Returns the colour of this player's discs.
         """
