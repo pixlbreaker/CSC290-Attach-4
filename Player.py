@@ -3,6 +3,7 @@
 This module contains an abstract class for a player.
 """
 from typing import Union, Tuple
+import board
 
 
 class Player:
@@ -14,7 +15,11 @@ class Player:
     colour:
         The colour of this player's discs.
     """
+    # Private Attributes:
+    # _game_board
+    #   the board that this player is playing on.
     colour: str
+    _game_board: board
 
     def move(self) -> Union[Tuple, None]:
         """
