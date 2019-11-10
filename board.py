@@ -153,3 +153,19 @@ class Board:
             final += "|\n"
         return final
 
+
+    
+    def move_options(self) -> List[tuple]:
+        """ Search self._n columns and record 
+        the co-ordinates of each
+        """
+        if self.is_board_full:
+            return []
+        opts = []
+        for x in range(0, self._m):
+            for y in range(0, self._n):
+                if (self._grid[y][x] != EMPTY): 
+                    opts.append(tuple([y, x]))
+                    break
+        return opts
+                
