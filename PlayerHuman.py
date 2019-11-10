@@ -9,8 +9,8 @@ import board
 
 class PlayerHuman():
     """
-        A player abstract class. This class should not be
-        instantiated and should instead be used by subclasses.
+        A human player which makes moves by clicking
+        on the column that they want to drop their disc.
 
         === Public Attributes ===
         colour:
@@ -24,14 +24,16 @@ class PlayerHuman():
 
     def __init__(self, game_board: board, colour: str):
         """
-
+        Creates a new human player with the specified disc colour
+        and game board.
         """
         self.colour = colour
         self._game_board = game_board
 
     def move(self, column: int) -> None:
         """
-
+        Drops a disc with this players colour at the specified
+        column.
         """
         self._game_board.drop_piece(self.colour, column)
 
