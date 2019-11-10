@@ -21,7 +21,7 @@ class Player:
     colour: str
     _game_board: board
 
-    def move(self) -> Union[Tuple, None]:
+    def move(self) -> None:
         """
         Returns the coordinates of where this player puts a disc
         as a Tuple or None if the player cannot make a move.
