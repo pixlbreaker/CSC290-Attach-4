@@ -26,8 +26,9 @@ class AIPlayer(Player):
     def get_board(self):
         return self.board
 
+    def decision_function(self):
+        return
 
 
 
 
-x = 2
