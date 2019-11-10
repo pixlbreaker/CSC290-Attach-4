@@ -32,4 +32,4 @@ class Player:
         """
         Returns the colour of this player's discs.
         """
-        pass
+        return self.colour
