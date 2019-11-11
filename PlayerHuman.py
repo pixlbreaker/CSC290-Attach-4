@@ -30,10 +30,10 @@ class PlayerHuman():
         self.colour = colour
         self._game_board = game_board
 
-    def move(self, column: int) -> None:
+    def move(self, column: int) -> bool:
         """
         Drops a disc with this players colour at the specified
-        column.
+        column then returns whether the move was successful.
         """
         self._game_board.drop_piece(self.colour, column)
 

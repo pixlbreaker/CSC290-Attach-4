@@ -21,10 +21,10 @@ class Player:
     colour: str
     _game_board: board
 
-    def move(self) -> None:
+    def move(self) -> bool:
         """
-        Returns the coordinates of where this player puts a disc
-        as a Tuple or None if the player cannot make a move.
+        Drops a disc with this players colour at the specified
+        column then returns whether the move was successful.
         """
         pass
 
