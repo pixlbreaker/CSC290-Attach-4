@@ -30,5 +30,26 @@ class AIPlayer(Player):
         return
 
 
+class AIEasy(AIPlayer):
+
+    """
+    """
+    def decision_function(self):
+        options = self.board
+        index = options[(random() * 10) % len(options)] # get valid index in options
+        return self.board.drop_piece(self.colour, index)
+
+
+class AIHard(AIPlayer):
+     """
+    """
+    def decision_function(self):
+        options = self.board._n
+        
+
+    
+    
+
+
 
 
