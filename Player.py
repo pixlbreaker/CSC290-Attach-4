@@ -2,7 +2,7 @@
 === Module Description ===
 This module contains an abstract class for a player.
 """
-from typing import Union, Tuple
+from abc import ABC
 import board
 
 

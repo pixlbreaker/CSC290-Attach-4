@@ -7,7 +7,7 @@ import Player
 import board
 
 
-class PlayerHuman():
+class PlayerHuman(Player):
     """
         A human player which makes moves by clicking
         on the column that they want to drop their disc.
@@ -35,10 +35,14 @@ class PlayerHuman():
         Drops a disc with this players colour at the specified
         column then returns whether the move was successful.
         """
-        self._game_board.drop_piece(self.colour, column)
+        return self._game_board.drop_piece(self.colour, column)
 
     def get_colour(self) -> str:
         """
         Returns the colour of this player's discs.
         """
         return self.colour
+
+if __name__ == '__main__':
+    b = board(8, 8)
+    a = PlayerHuman(b, "red")
