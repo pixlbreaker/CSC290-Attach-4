@@ -3,7 +3,6 @@
 This module contains the class that creates and edits the attach-4 board.
 """
 from typing import List
-import random
 
 # CONSTANTS
 RED = 'R'
@@ -153,19 +152,16 @@ class Board:
             final += "|\n"
         return final
 
-
-    
     def move_options(self) -> List[tuple]:
-        """ Search self._n columns and record 
+        """ Search self._n columns and record
         the co-ordinates of each
         """
         if self.is_board_full:
             return []
-        opts = []
+        options = []
         for x in range(0, self._m):
             for y in range(0, self._n):
-                if (self._grid[y][x] != EMPTY): 
-                    opts.append(tuple([y, x]))
+                if self._grid[y][x] != EMPTY:
+                    options.append(tuple([y, x]))
                     break
-        return opts
-                
+        return options

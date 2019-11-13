@@ -7,7 +7,7 @@ object and displays the main screen (which starts the games loop).
 """
 # Import classes from project files
 # uncomment later
-# from gui.py import *
+from src.gui import *
 # from model.py import *
 
 
@@ -17,12 +17,10 @@ def init() -> None:
     main menu of the Attach 4 game.
     """
 
-    # TODO: initialize the GUI object for this game
-
-    # TODO: invoke GUI method to start game loop - display main menu
+    # Creates the game object
+    game = Gui()
 
     return None
-
 
 
 # Initializes the entry point of the Attach 4 game
