@@ -35,6 +35,8 @@ class Gui:
         """
         pygame.init()
 
+        self.loop = True
+
         # Set screen dimensions with given <width> and <height>
         self.width = width
         self.height = height
@@ -50,6 +52,7 @@ class Gui:
         self.p1 = pygame.image.load('assets/redcircle.png')
         self.p2 = pygame.image.load('assets/yellowcircle.png')
         self.board = pygame.image.load('assets/board.png')
+        self.game_title = pygame.image.load('assets/game_title.png')
 
         # Add buttons to the game
         self.buttons = []
@@ -85,25 +88,38 @@ class Gui:
         """
         Creates the main menu page, with included buttons
         """
+        self.screen.fill((255, 50, 50))
+        self.screen.blit(self.game_title, (50, self.height//8))
+
         start_game_button = Button(Rect(self.width / 2 - 50,
                                         self.height / 2 - 10, 100, 20),
                                    self.start_game, (255, 255, 255),
                                    'Start Game')
 
+        end_game_button = Button(Rect(self.width / 2 - 50,
+                                      self.height / 2 + 20, 100, 20),
+                                 self.end_game, (255, 255, 255),
+                                 'Quit Game')
+
         self.buttons.append(start_game_button)
-        self.screen.fill((255, 0, 0))
+        self.buttons.append(end_game_button)
+
+    def end_game(self) -> None:
+        """
+        Ends the game process
+        """
+        self.loop = False
 
     def game_loop(self) -> None:
         """
         Runs the game process until the user decides to exit the game
         """
-        loop = True
 
-        while loop:
+        while self.loop:
             for event in pygame.event.get():
                 # Closes the game if the user closes the window.
                 if event.type == pygame.QUIT:
-                    loop = False
+                    self.loop = False
 
                 # Check if a button can react to the event
                 for button in self.buttons:
