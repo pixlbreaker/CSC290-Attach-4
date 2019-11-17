@@ -116,9 +116,11 @@ class Board:
         """
         Returns true iff there are no EMPTY cells in the grid
         """
+
         for column in range(self._m):
             if self._grid[0][column] == EMPTY:  # Check if the top row is EMPTY
                 return False
+        
         return True
 
     def is_valid_cell(self, row: int, column: int):
@@ -157,14 +159,22 @@ class Board:
         the co-ordinates that have enough room 
         to drop a piece into.
         """
-        if self.is_board_full:
+        if self.is_board_full():
             return []
+
         options = []
-        for x in range(0, self._m):
-            for y in range(0, self._n):
-                if self._grid[y][x] != EMPTY:
-                    options.append(tuple([x, y]))
+        for col in range(0, self._m):
+            for row in range(self._n-1, -1, -1):
+                if self._grid[row][col] == EMPTY:
+                    options.append(tuple([row, col]))
                     break
+        
         return options
 
+    def is_option(self, index) -> bool:
+        row, col = index[0], index[1]
+        if self._grid[row][col] != EMPTY : return False
+
+        if row+1 < self._n and self._grid[row+1][col] == EMPTY : return False
+        return True
     

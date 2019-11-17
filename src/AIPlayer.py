@@ -24,7 +24,7 @@ class AIPlayer(Player):
         super.move()
 
     def get_colour(self):
-        super.get_colour()
+        return self.colour
 
     def get_board(self):
         return self.board
@@ -39,10 +39,13 @@ class AIEasy(AIPlayer):
     mode and makes moves based on random number generation. 
     """
     def decision_function(self):
-        options = self.board.move_option()
+        options = self.board.move_options()
         if options == [] : return None
-        index = options[(random() * 10) % len(options)] # get valid index in options
-        return self.board.drop_piece(self.colour, index)
+        index = options[int(random() * 10) % len(options)] # get valid index in options
+        return index
+
+    def get_colour(self):
+        self.get_colour()
 
 
 class AIHard(AIPlayer):
@@ -61,12 +64,13 @@ class AIHard(AIPlayer):
         indices = self.board.move_options()
         scores = {}
         for i in range(0, len(indices)):
-            scores.setdefault(indices[i], self.get_path_scores(indices[i]))
+            scores.setdefault(indices[i], self.all_path_scores(indices[i]))
         if len(scores) < 1 : return None
-        return max(scores.items(), key=operator.itemgetter(1))[0]
+        print("Scores: " +str(scores))
+        return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 
 
-    def get_path_scores(self, index: Tuple[int, int]):
+    def all_path_scores(self, index: Tuple[int, int]):
         """ Computes the lengths of every path (a path is defined as a diagonal,
         horizontal or vertical arrangement of consecutive discs of the same
         colour) of a given index in the board attribute.
@@ -75,10 +79,11 @@ class AIHard(AIPlayer):
         path_scores = 0
         for x_delta in range(-1, 2):
             for y_delta in range(-1, 2):
-                path_scores += self.get_path_length(index, x_delta, y_delta)
+                if (x_delta == 0 and y_delta == 0) : continue
+                path_scores += self.get_path_score(index, x_delta, y_delta)
         return path_scores
 
-    def get_path_length(self, index: Tuple[int, int], x_delta, y_delta) -> 0:
+    def get_path_score(self, index: Tuple[int, int], x_delta, y_delta) -> 0:
         """ Traverses a path in direction of x_delta and y_delta . 
         ======== Parameters ==========
 
@@ -96,19 +101,42 @@ class AIHard(AIPlayer):
             (0 < column + x_delta < self.board._m):
             row += y_delta
             column += x_delta
-            if (self.board[row][column] == ref_colour):
+            if (self.board._grid[row][column] == ref_colour):
                 score += 1 
-            elif (i == 0):
+            elif (i == 0 and self.board._grid[row][column] != ref_colour and \
+                self.board._grid[row][column] != ' '):
                 score += 1
-                ref_colour = self.board[row][column]
+                ref_colour = self.board._grid[row][column]
+            elif (i > 1 and self.board._grid[row][column] == ' ' and \
+                self.board.is_option((row, column))):
+                score += 1
+                break
             else : break
             i += 1
 
+            if (score == 3) and ref_colour == self.colour:
+                score *= 3
+                break
+            elif (score == 3):
+                score *= 2
+                break
         return score 
 
-                
-
-
-
-
-
+    def interpret_scores(self, sorted_scores):
+        highest, tied = sorted_scores[0][1], 0
+        print("sorted: "+str(sorted_scores))
+        for i in range(1, len(sorted_scores)):
+            if (highest != sorted_scores[i][1]):
+               break
+            tied += 1
+        
+        current, closest, medianx, mediany = float('inf'), None, self.board._m / 2, \
+            self.board._n / 2
+        if tied > 0:
+            for key in sorted_scores[:tied+1]:
+                dist = abs(medianx - key[0][1]) + abs(mediany - key[0][0])
+                if dist < current:
+                    closest = key[0]
+                    current = dist
+            return closest
+        else : return sorted_scores[0][0]
