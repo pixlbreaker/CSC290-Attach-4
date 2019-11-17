@@ -79,7 +79,7 @@ class Gui:
         """
         self.menu = self.make_game
         self.buttons.clear()
-        self.screen.fill((255, 255, 255))
+        self.screen.fill((184, 205, 255))
         self.screen.blit(self.p1, (208, 0))
         self.screen.blit(self.p2, (408, 0))
         self.screen.blit(self.board, (-1, 128))
@@ -88,8 +88,8 @@ class Gui:
         """
         Creates the main menu page, with included buttons
         """
-        self.screen.fill((255, 50, 50))
-        self.screen.blit(self.game_title, (50, self.height//8))
+        self.screen.fill((184, 205, 255))
+        self.screen.blit(self.game_title, (75, self.height//8))
 
         start_game_button = Button(Rect(self.width / 2 - 50,
                                         self.height / 2 - 10, 100, 20),
