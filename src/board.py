@@ -154,7 +154,8 @@ class Board:
 
     def move_options(self) -> List[tuple]:
         """ Search self._n columns and record
-        the co-ordinates of each
+        the co-ordinates that have enough room 
+        to drop a piece into.
         """
         if self.is_board_full:
             return []
@@ -162,6 +163,8 @@ class Board:
         for x in range(0, self._m):
             for y in range(0, self._n):
                 if self._grid[y][x] != EMPTY:
-                    options.append(tuple([y, x]))
+                    options.append(tuple([x, y]))
                     break
         return options
+
+    
