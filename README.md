@@ -16,7 +16,7 @@ This is a connect-4 inspired game built with python and pygame for our **CSC 290
 - Ravnit Singh Lotay
 - Michael Skotar
 
-## Installation
+## Installation 🖥️
 Our game relies on both python and pygame. Python is the programming language that our game was coded in, while pygame is the package we used to have a graphical user interface.
 
 ### Downloading Python
@@ -45,10 +45,10 @@ Run this following command to install pygame.
 
 `pip install pygame`
 
-## How to Play
+## How to Play 🎮
 The objective of the game is to get 4 chips in a row. This can be in any orientation. Either vertically, horizontally, or diagonally. 
 
-## Screenshots
+## Screenshots 👾
 
-## Documentation
+## Documentation 📚
 
