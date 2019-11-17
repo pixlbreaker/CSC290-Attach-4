@@ -1,4 +1,5 @@
 from Player import Player
+from random import random
 
 # Inherits from the abstract Player class
 class AIPlayer(Player):
@@ -32,19 +33,20 @@ class AIPlayer(Player):
 
 class AIEasy(AIPlayer):
 
-    """
+    """The class AIEasy implements the easy diificulty level
+    mode and makes moves based on random number generation. 
     """
     def decision_function(self):
-        options = self.board
+        options = self.board.move_option()
         index = options[(random() * 10) % len(options)] # get valid index in options
         return self.board.drop_piece(self.colour, index)
 
 
 class AIHard(AIPlayer):
-     """
+    """
     """
     def decision_function(self):
-        options = self.board._n
+        return None
         
 
     
