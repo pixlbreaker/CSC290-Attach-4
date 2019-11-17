@@ -3,8 +3,8 @@
 ## Content
 1. Introduction
 2. Installation
-3. Game Controls
-4. How to play
+3. How to play
+4. Screenshots
 5. Documentation
 
 ## Introduction
@@ -33,9 +33,22 @@ For linux distributions, such as Debian and Ubuntu use the package manager syste
 
 `sudo apt-get install python3`
 
-## Game Controls
+### Downloading Dependancies
+Alongside python, this project also uses a common library called pygame. Pygame is a library used to create games in python on any of the included operating systems. Since it does not require any other library in order to handle graphics rendering.
+
+#### Pip
+Pygame can be installed by using a package manager. The most commonly used one called `pip` is recommended in this case. If you downloaded python 3.4 or greated then pip is already on your system. If not follow [this](https://pip.pypa.io/en/stable/installing/) recommended guide. 
+
+#### Pygame
+Once pip is now installed on your system you can install pygame.
+Run this following command to install pygame.
+
+`pip install pygame`
 
 ## How to Play
+The objective of the game is to get 4 chips in a row. This can be in any orientation. Either vertically, horizontally, or diagonally. 
+
+## Screenshots
 
 ## Documentation
 
