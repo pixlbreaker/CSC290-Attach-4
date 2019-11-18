@@ -46,7 +46,11 @@ Run this following command to install pygame.
 `pip install pygame`
 
 ## How to Play 🎮
-The objective of the game is to get 4 chips in a row. This can be in any orientation. Either vertically, horizontally, or diagonally. 
+The objective of the game is to get 4 chips in a row. This can be in any orientation. Either vertically, horizontally, or diagonally.
+
+This is a turn-based game, meaning that each player has a turn when they make their move. Each move consists of selecting a row to drop a chip in.
+
+In this specific implementation we use mouse's position to determine where to drop the chip.
 
 ## Screenshots 👾
 
