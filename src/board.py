@@ -42,6 +42,7 @@ class Board:
             Grid symbols are represented as letters defined by RED or BLUE
             The empty space is represented as EMPTY
         """
+        self._turn = 0
         self._n = height
         self._m = width
         self._grid = []
@@ -65,6 +66,7 @@ class Board:
         for row in range(self._n-1, -1, -1):
             if self._grid[row][column] == EMPTY:
                 self._grid[row][column] = colour  # The piece is placed
+                self._turn += 1
                 return True
 
         return False  # If no piece can be dropped
@@ -177,4 +179,15 @@ class Board:
 
         if row+1 < self._n and self._grid[row+1][col] == EMPTY : return False
         return True
-    
+
+    def get_col(self)-> int:
+        return self._m
+    def get_row(self) -> int:
+        return self._n
+    def get_grid(self) -> list:
+        return self._grid
+    def get_whos_turn(self):
+        if self._turn%2 == 0:
+            return "R"
+        else:
+            return "Y"
