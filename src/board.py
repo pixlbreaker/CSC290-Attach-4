@@ -61,15 +61,20 @@ class Board:
             most available row in the given column.
             If the entire column is already full the drop cannot occur.
         """
-        if self._grid[0][column] != EMPTY:  # Check if the column is full
+        result = self.get_drop_y(column)
+        if result == -1:
             return False
+
+        self._grid[result][column] = colour  # The piece is placed
+        self._turn += 1
+        return True
+
+    def get_drop_y(self, column):
         for row in range(self._n-1, -1, -1):
             if self._grid[row][column] == EMPTY:
-                self._grid[row][column] = colour  # The piece is placed
-                self._turn += 1
-                return True
+                return row
 
-        return False  # If no piece can be dropped
+        return -1
 
     def is_connected(self) -> str:
         """
@@ -122,7 +127,7 @@ class Board:
         for column in range(self._m):
             if self._grid[0][column] == EMPTY:  # Check if the top row is EMPTY
                 return False
-        
+
         return True
 
     def is_valid_cell(self, row: int, column: int):
@@ -158,7 +163,7 @@ class Board:
 
     def move_options(self) -> List[tuple]:
         """ Search self._n columns and record
-        the co-ordinates that have enough room 
+        the co-ordinates that have enough room
         to drop a piece into.
         """
         if self.is_board_full():
@@ -170,24 +175,44 @@ class Board:
                 if self._grid[row][col] == EMPTY:
                     options.append(tuple([row, col]))
                     break
-        
+
         return options
 
     def is_option(self, index) -> bool:
+        """
+        Returns true iff the drop is possible
+        """
         row, col = index[0], index[1]
-        if self._grid[row][col] != EMPTY : return False
+        if self._grid[row][col] != EMPTY:
+            return False
 
-        if row+1 < self._n and self._grid[row+1][col] == EMPTY : return False
+        if row+1 < self._n and self._grid[row+1][col] == EMPTY:
+            return False
         return True
 
-    def get_col(self)-> int:
+    def get_col(self) -> int:
+        """
+        Returns the number of columns in the game
+        """
         return self._m
+
     def get_row(self) -> int:
+        """
+        Returns the number of row in the game
+        """
         return self._n
+
     def get_grid(self) -> list:
+        """
+        Returns the current grid of the game
+        """
         return self._grid
+
     def get_whos_turn(self):
-        if self._turn%2 == 0:
+        """
+        Returns the current move of the players colour
+        """
+        if self._turn % 2 == 0:
             return "R"
         else:
             return "Y"
