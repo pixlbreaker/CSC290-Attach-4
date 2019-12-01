@@ -2,9 +2,8 @@
 === Module Description ===
 This module contains a class for a human player.
 """
-
-import Player
-import board
+from src import Player
+from src import board
 
 
 class PlayerHuman(Player):
