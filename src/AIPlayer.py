@@ -1,4 +1,4 @@
-from Player import Player
+from src.Player import Player
 from random import random
 from typing import List, Tuple
 import operator
@@ -23,12 +23,6 @@ class AIPlayer(Player):
     def move(self):
         super.move()
 
-    def get_colour(self):
-        return self.colour
-
-    def get_board(self):
-        return self.board
-
     def decision_function(self):
         return
 
@@ -43,10 +37,7 @@ class AIEasy(AIPlayer):
         if options == [] : return None
         index = options[int(random() * 10) % len(options)] # get valid index in options
         return index
-
-    def get_colour(self):
-        self.get_colour()
-
+    
 
 class AIHard(AIPlayer):
     """The class AIHard implements the hard diificulty level
