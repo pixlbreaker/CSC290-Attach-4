@@ -2,8 +2,8 @@
 
 ## Content
 1. Introduction
-2. Installation
-3. How to play
+2. How to Play
+3. Installation
 4. Screenshots
 5. Documentation
 
@@ -15,6 +15,13 @@ This is a connect-4 inspired game built with python and pygame for our **CSC 290
 - Michael Carmine De Lisio
 - Ravnit Singh Lotay
 - Michael Skotar
+
+## How to Play 🎮
+**The objective of the game is to get 4 chips in a row.** This can be in any orientation. Either vertically, horizontally, or diagonally.
+
+This is a turn-based game, meaning that each player has a turn when they make their move. Each move consists of selecting a row to drop a chip in.
+
+In this specific implementation we use mouse's position to determine where to drop the chip.
 
 ## Installation 🖥️
 Our game relies on both python and pygame. Python is the programming language that our game was coded in, while pygame is the package we used to have a graphical user interface.
@@ -45,14 +52,14 @@ Run this following command to install pygame.
 
 `pip install pygame`
 
-## How to Play 🎮
-The objective of the game is to get 4 chips in a row. This can be in any orientation. Either vertically, horizontally, or diagonally.
+### Releases
+Instead of having this we have a section on the github that holds the current release of the game. 
 
-This is a turn-based game, meaning that each player has a turn when they make their move. Each move consists of selecting a row to drop a chip in.
-
-In this specific implementation we use mouse's position to determine where to drop the chip.
 
 ## Screenshots 👾
 
 ## Documentation 📚
+
+### Code Structure
+Our code is structured with the 
 
