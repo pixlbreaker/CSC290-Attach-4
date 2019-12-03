@@ -30,6 +30,8 @@ class Gui:
         Player 2
     _board:
         The Board for the game.
+    _current_view:
+        The screen currently being displayed
     """
 
     def __init__(self, width=800, height=600, board=Board(7, 8)) -> None:
@@ -38,24 +40,23 @@ class Gui:
         then
         """
         pygame.init()
+        
         pygame.mixer.music.set_volume(0.2)
-        
-        
-
         self.loop = True
 
         # Set screen dimensions with given <width> and <height>
         self.width = width
         self.height = height
-        self.screen = pygame.display.set_mode((width, height))
+        self._screen = pygame.display.set_mode((width, height))
 
         # Set the Title and Icon
         pygame.display.set_caption("Attach 4")
-        self.icon = pygame.image.load('assets/icon.png')
-        pygame.display.set_icon(self.icon)
+        self._icon = pygame.image.load('assets/icon.png')
+        pygame.display.set_icon(self._icon)
 
-        self.current_view = MainMenu(self)
-        self.INTRO_MUSIC = pygame.mixer.music.load("assets/Intro.wav")
+        self._current_view = MainMenu(self)
+        #Begin audio playback
+        self._INTRO_MUSIC = pygame.mixer.music.load("assets/Intro.wav")
         pygame.mixer.music.play(-1)
         self.game_loop()
 
@@ -66,8 +67,8 @@ class Gui:
         Note:
             This should be envoked once, in order to start the game.
         """
-        self.current_view = InGame(self)
-        self.GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
+        self._current_view = InGame(self)
+        self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
         pygame.mixer.music.play(-1)
         
 
@@ -78,8 +79,8 @@ class Gui:
         Note:
             This should be envoked once, in order to start the game.
         """
-        self.current_view = MainMenu(self)
-        self.INTRO_MUSIC = pygame.mixer.music.load("assets/Intro.wav")
+        self._current_view = MainMenu(self)
+        self._INTRO_MUSIC = pygame.mixer.music.load("assets/Intro.wav")
         pygame.mixer.music.play(-1)
 
     def end_game(self) -> None:
@@ -95,9 +96,9 @@ class Gui:
                 if event.type == pygame.QUIT:
                     self.loop = False
 
-                self.current_view.update(event)
+                self._current_view.update(event)
 
-            self.current_view.display(self.screen)
+            self._current_view.display(self._screen)
             pygame.display.flip()
 
         # Terminate
