@@ -24,6 +24,8 @@ This is a connect-4 inspired game built with python and pygame for our **CSC 290
 - Diagonally
 
 ### Game Play
+Once you start up the game you are met with the main menu.
+
 ![Main Menu](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/titlepage.png "Main Menu")
 
 This is a turn-based game, meaning that each player has a turn when they make their move. Each move consists of selecting a row to drop a chip in.
@@ -65,6 +67,11 @@ Run this following command to install pygame.
 - Easiest way to get the game is from the releases page found [here](https://github.com/pixlbreaker/CSC290-Attach-4/releases)
 
 ## Screenshots 👾
+Here we have screenshots of the game in progress. 
+
+![Screenshot_1](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/gameplay_1.png "Gameplay Picture 1")
+
+![Screenshot_2](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/gameplay_2.png "Gameplay Picture 2")
 
 ## Documentation 📚
 
