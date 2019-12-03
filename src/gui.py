@@ -5,6 +5,7 @@ gui for the attach 4 game
 """
 from src.mainMenu import *
 from src.inGame import *
+from assets import *
 import pygame
 
 
@@ -37,6 +38,9 @@ class Gui:
         then
         """
         pygame.init()
+        pygame.mixer.music.set_volume(0.2)
+        
+        
 
         self.loop = True
 
@@ -51,6 +55,8 @@ class Gui:
         pygame.display.set_icon(self.icon)
 
         self.current_view = MainMenu(self)
+        self.INTRO_MUSIC = pygame.mixer.music.load("assets/Intro.wav")
+        pygame.mixer.music.play(-1)
         self.game_loop()
 
     def start_game(self) -> None:
@@ -61,6 +67,9 @@ class Gui:
             This should be envoked once, in order to start the game.
         """
         self.current_view = InGame(self)
+        self.GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
+        pygame.mixer.music.play(-1)
+        
 
     def goto_main_menu(self) -> None:
         """
@@ -70,6 +79,8 @@ class Gui:
             This should be envoked once, in order to start the game.
         """
         self.current_view = MainMenu(self)
+        self.INTRO_MUSIC = pygame.mixer.music.load("assets/Intro.wav")
+        pygame.mixer.music.play(-1)
 
     def end_game(self) -> None:
         """Ends the game process."""

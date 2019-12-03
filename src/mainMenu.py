@@ -77,7 +77,7 @@ class MainMenu:
         self.buttons = []
         self.buttons.append(start_game_button)
         self.buttons.append(end_game_button)
-
+        
     def display(self, screen: pygame.Surface):
         """
         Displays the button with the text centered
