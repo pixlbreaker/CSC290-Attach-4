@@ -3,7 +3,14 @@ from random import random
 from typing import List, Tuple
 import operator
 
-# Inherits from the abstract Player class
+    """ == AIPlayer Module ==
+    This class deals with the implementation of single player mode 
+    difficulty levels and their logic. AIPlayer, the abstract player 
+    class, must first be inherited from to create an instance of an
+    AIPlayer difficulty level - we have implemented two: AIEasy and
+    AIHard.
+    """
+
 class AIPlayer(Player):
 
     """
@@ -65,7 +72,6 @@ class AIHard(AIPlayer):
         """ Computes the lengths of every path (a path is defined as a diagonal,
         horizontal or vertical arrangement of consecutive discs of the same
         colour) of a given index in the board attribute.
-
         """
         path_scores = 0
         for x_delta in range(-1, 2):
@@ -114,6 +120,10 @@ class AIHard(AIPlayer):
         return score 
 
     def interpret_scores(self, sorted_scores):
+        """ Return the highest scoring column from scorted scores.
+        In the case of a tie in columns, return the column closest to
+        the middle of the board.
+        """
         highest, tied = sorted_scores[0][1], 0
         print("sorted: "+str(sorted_scores))
         for i in range(1, len(sorted_scores)):
