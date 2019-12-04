@@ -112,23 +112,21 @@ The code that resides in the `src` folder is broken up into the following files.
 
 #### AI Functions
 
-The below function is found in the [AIPlayer.py](src/AIPlayer.py) file. The function is called the decision_function. It is used by the HardAI to help determine where is the best possible spot to place down a chip.
+The below function is found in the [AIPlayer.py](src/AIPlayer.py) file. The function is called the decision_function. It is used by the HardAI to help determine where is the best possible spot to place down a chip. For a more detailed explanantion check the code comments in the helper functions listed below. In summary, the AIHard ```decision_function``` calls move_options (a method of the Board class) to get all the possible next moves given the current state of the board. The function computes a score for each column in the list "indices". A score is defined as the weighted sum of all adjacent paths (in any direction) of a given index in the board (check the helper function ```get_path_score``` for full details), where a path is defined as a contigous line of common coloured discs. Then ```decision_function``` returns the highest scoring column, otherwise it returns the column closest to the median index of the board.
 
 ```python
-if self.board.is_board_full():
-    return None
+if self.board.is_board_full() : return None
 
-# Scores and Indicies
+# get indices representing all next possible moves per column 
 indices = self.board.move_options()
-scores = {}
 
+scores = {} 
 for i in range(0, len(indices)):
+    # populate scores dictionary with scores for every possible move
     scores.setdefault(indices[i], self.all_path_scores(indices[i]))
-if len(scores) < 1 : 
-    return None
-print("Scores: " +str(scores))
+if len(scores) < 1 : return None
 
-# Returns the interperted scores that is sorted
+# return the highest scoring index
 return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 ```
 
@@ -139,20 +137,20 @@ For this project my role was more administrative. I worked on the documentation,
 As for the project I made small changes which included spelling errors or documentation. I also linked the AI modes to the existing project. Here I used the existing code as a guide to patch in the extra gamemodes.
 
 ### Michael De Lisio
-My role in this project mostly entailed developing the logic and writing the code for the AIPlayer module. This involved
+My role in this project mostly entailed developing the logic and writing the code for the [AIPlayer.py](src/AIPlayer.py) module. This involved
 developing a organized class structure that could easily interface with the gui, board and inGame modules. It also 
 involved devising a reasonable strategy, within the alloted time and resources available, to develope a fun and competitive
 artificial player to play against.
 
 Since, as a group we decided to mostly use object oriented programming structure, I followed this model for consistency and
-so that each module could interface more seemlessly with each other. The AIPlayer abstract class defines an abstract method "decision_function()", which determines the AIPlayer's (of some difficulty level) next move; specifically, it determines
+so that each module could interface more seemlessly with each other. The AIPlayer abstract class defines an abstract method ```decision_function```, which determines the AIPlayer's (of some difficulty level) next move; specifically, it determines
 and returns a valid index into the board matrix (a tuple of integers representing a row and column respectively) based on
 some algorithm. 
 
-The AIEasy and AIHard difficulty levels both implemented different decision_functions. AIEasy implements the decision function
-using random number generation. AIHard's implementation is a little more intuitive. The inspiration for this game, "Connect 4", has a known solution that involves generating all possible moves and scoring them accordingly. This known solution, was neither within the scope of our implementation or resources to attempt. Therefore, the AIHard uses an adaptation of this solution to implement its decision_function. I wrote a more detailed summary of the AIHard algorithm used in the "AI Functions" section within this file. Other than the implementation of the AIPlayer module, my influence on other modules was 
-limited (this was agreed upon by design) and my contributions to this README.txt document was soley to the "AI Functions"
-section, since we assigned a group responsible for the administrative tasks such writing the README.txt, licensing, etc.
+The AIEasy and AIHard difficulty levels both implemented different decision functions. AIEasy implements the decision function
+using random number generation. AIHard's implementation is a little more intuitive. The inspiration for this game, "Connect 4", has a known solution that involves generating all possible moves and scoring them accordingly. This known solution, was neither within the scope of our implementation or resources to attempt. Therefore, the AIHard uses an adaptation of this solution to implement its ```decision_function```. I wrote a more detailed summary of the AIHard algorithm used in the "AI Functions" section within this file. Other than the implementation of the [AIPlayer.py](src/AIPlayer.py) module, my influence on other modules was 
+limited (this was agreed upon by design) and my contributions to this README.md document was soley to the "AI Functions"
+section, since we assigned a group responsible for the administrative tasks such writing the README.md, licensing, etc.
 
 ## Additional Information
 
