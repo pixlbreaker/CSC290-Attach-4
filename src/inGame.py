@@ -6,11 +6,18 @@ assets (images/buttons) for in-game state of the gui
 from src.board import *
 from src.gui import *
 from src.util import *
+from src.AIPlayer import *
 from typing import Tuple
 import pygame
 from pygame import Rect
 from pygame import gfxdraw
 import math
+import enum
+
+class Mode(enum.Enum):
+    Two_Player = 1
+    Easy = 2
+    Hard = 3
 
 
 class InGame:
@@ -34,7 +41,7 @@ class InGame:
 
     """
 
-    def __init__(self, gui):
+    def __init__(self, gui, mode: Mode):
         """
         Creates a button with attributes
 
@@ -51,6 +58,8 @@ class InGame:
         self.padding = 10
         self.square_size = 50
         self.current_col = -1
+        self.mode = mode
+       
 
         self.board = Board(self.rows, self.cols)
 
@@ -59,6 +68,10 @@ class InGame:
                               self.rows * (self.square_size + 2*self.padding))
 
         self.grid_rect.center = (400, 325)
+
+        if (self.mode == Mode.Easy) : self.opponent = AIEasy('R',self.board)
+        elif (self.mode == Mode.Hard) : self.opponent = AIHard('R', self.board)
+        else : self.opponent = None
 
     def display(self, screen: pygame.Surface):
         """
@@ -134,25 +147,40 @@ class InGame:
         gfxdraw.filled_circle(screen, pos[0], pos[1],
                               self.square_size // 2, fill_color)
 
-    def update(self, event):
-        """
-        Executes the function (on_click) when the button is pressed
-        """
+    # def update(self, event):
+    #     """
+    #     Executes the function (on_click) when the button is pressed
+    #     """
+    #     if (self.mode == Mode.Two_Player):
+    #         return self.update_two_player(event)
+    #     elif (self.mode == Mode.Easy):
+    #         return self.update_easy_mode(event)
+    #     else : 
+    #         return self.update_hard_mode(event)
 
+
+    def update(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN \
                 and (event.button == 1 or event.button == 3):
 
             if self.current_col != -1 and self.board.drop_piece(
                     self.board.get_whos_turn(), self.current_col):
-
                 result = self.board.is_connected()
                 if result != " " or self.board.is_board_full():
                     print("WINNER", result)
                     self.gui.goto_main_menu()
-
+                if self.opponent != None :
+                    opp_move = self.opponent.decision_function()[1]
+                    if self.current_col != -1 and self.board.drop_piece( \
+                        self.board.get_whos_turn(), opp_move):
+                        result = self.board.is_connected()
+                        if result != " " or self.board.is_board_full():
+                            print("WINNER", result)
+                            self.gui.goto_main_menu()
         elif event.type == pygame.MOUSEMOTION:
             if self.grid_rect.collidepoint(event.pos):
                 self.current_col = int(((event.pos[0] - self.grid_rect.x) /
                                         self.grid_rect.width) * self.cols)
             else:
                 self.current_col = -1
+    

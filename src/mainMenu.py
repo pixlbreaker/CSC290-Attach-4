@@ -9,6 +9,7 @@ from src.gui import *
 from typing import Tuple
 import pygame
 from pygame import Rect
+from src.inGame import *
 
 
 class MainMenu:
@@ -62,7 +63,7 @@ class MainMenu:
         two_player_rect.centery = self.gui.height // 2 - 50
 
         two_player_button = Button(two_player_rect,
-                                   self.gui.start_game, (255, 255, 255),
+                                   self.gui.start_game_two_player, (255, 255, 255),
                                    '2 Player')
         # Start AI Easy Button
         easy_rect = Rect(0, 0, 200, 50)
@@ -70,7 +71,7 @@ class MainMenu:
         easy_rect.centery = self.gui.height // 2 + 50
 
         easy_button = Button(easy_rect,
-                                   self.gui.start_game, (255, 255, 255),
+                                   self.gui.start_game_easy, (255, 255, 255),
                                    'Easy AI')
         # Start AI Hard Button
         hard_rect = Rect(0, 0, 200, 50)
@@ -78,7 +79,7 @@ class MainMenu:
         hard_rect.centery = self.gui.height // 2 + 150
 
         hard_button = Button(hard_rect,
-                                   self.gui.start_game, (255, 255, 255),
+                                   self.gui.start_game_hard, (255, 255, 255),
                                    'Hard AI')
 
         # Quit Button

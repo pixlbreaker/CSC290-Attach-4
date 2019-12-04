@@ -60,14 +60,36 @@ class Gui:
         pygame.mixer.music.play(-1)
         self.game_loop()
 
-    def start_game(self) -> None:
+    def start_game_two_player(self) -> None:
         """
         Updates the game state so it clears the menu and starts the game
 
         Note:
             This should be envoked once, in order to start the game.
         """
-        self._current_view = InGame(self)
+        self._current_view = InGame(self, Mode.Two_Player)
+        self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
+        pygame.mixer.music.play(-1)
+
+    def start_game_easy(self) -> None:
+        """
+        Updates the game state so it clears the menu and starts the game
+
+        Note:
+            This should be envoked once, in order to start the game.
+        """
+        self._current_view = InGame(self, Mode.Easy)
+        self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
+        pygame.mixer.music.play(-1)
+
+    def start_game_hard(self) -> None:
+        """
+        Updates the game state so it clears the menu and starts the game
+
+        Note:
+            This should be envoked once, in order to start the game.
+        """
+        self._current_view = InGame(self, Mode.Hard)
         self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
         pygame.mixer.music.play(-1)
         

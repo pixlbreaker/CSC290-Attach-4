@@ -3,13 +3,13 @@ from random import random
 from typing import List, Tuple
 import operator
 
-    """ == AIPlayer Module ==
-    This class deals with the implementation of single player mode 
-    difficulty levels and their logic. AIPlayer, the abstract player 
-    class, must first be inherited from to create an instance of an
-    AIPlayer difficulty level - we have implemented two: AIEasy and
-    AIHard.
-    """
+""" == AIPlayer Module ==
+This class deals with the implementation of single player mode 
+difficulty levels and their logic. AIPlayer, the abstract player 
+class, must first be inherited from to create an instance of an
+AIPlayer difficulty level - we have implemented two: AIEasy and
+AIHard.
+"""
 
 class AIPlayer(Player):
 
