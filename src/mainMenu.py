@@ -56,26 +56,44 @@ class MainMenu:
         self.game_title = pygame.transform.smoothscale(
             self.game_title, self.title_rect.size)
 
-        # Start Button
-        start_rect = Rect(0, 0, 200, 50)
-        start_rect.centerx = self.gui.width // 2
-        start_rect.centery = self.gui.height // 2
+        # Start 2 Player Button
+        two_player_rect = Rect(0, 0, 200, 50)
+        two_player_rect.centerx = self.gui.width // 2
+        two_player_rect.centery = self.gui.height // 2 - 50
 
-        start_game_button = Button(start_rect,
+        two_player_button = Button(two_player_rect,
                                    self.gui.start_game, (255, 255, 255),
-                                   'Start Game')
+                                   '2 Player')
+        # Start AI Easy Button
+        easy_rect = Rect(0, 0, 200, 50)
+        easy_rect.centerx = self.gui.width // 2
+        easy_rect.centery = self.gui.height // 2 + 50
+
+        easy_button = Button(easy_rect,
+                                   self.gui.start_game, (255, 255, 255),
+                                   'Easy AI')
+        # Start AI Hard Button
+        hard_rect = Rect(0, 0, 200, 50)
+        hard_rect.centerx = self.gui.width // 2
+        hard_rect.centery = self.gui.height // 2 + 150
+
+        hard_button = Button(hard_rect,
+                                   self.gui.start_game, (255, 255, 255),
+                                   'Hard AI')
 
         # Quit Button
         end_rect = Rect(0, 0, 200, 50)
         end_rect.centerx = self.gui.width // 2
-        end_rect.centery = self.gui.height // 2 + 100
+        end_rect.centery = self.gui.height // 2 + 250
 
         end_game_button = Button(end_rect,
                                  self.gui.end_game, (255, 255, 255),
                                  'Quit Game')
 
         self.buttons = []
-        self.buttons.append(start_game_button)
+        self.buttons.append(two_player_button)
+        self.buttons.append(easy_button)
+        self.buttons.append(hard_button)
         self.buttons.append(end_game_button)
         
     def display(self, screen: pygame.Surface):
