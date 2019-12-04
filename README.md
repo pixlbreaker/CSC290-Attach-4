@@ -6,7 +6,8 @@
 3. Installation
 4. Screenshots
 5. Documentation
-6. Additional Information
+6. Individual Contributions
+7. Additional Information
 
 ## Introduction
 This is a connect-4 inspired game built with python and pygame for our **CSC 290: Communication Skills for Computer Scientists**. Our team members include:
@@ -47,6 +48,8 @@ First we will install the game files from the releases tab
     ```
 
 ### Downloading Python 🐍
+This game uses python as the main language. In order to play you need to have python on your computer. Below we show you how to install `python 3.x`.
+
 #### Windows
 - Download python from their website linked [here](https://www.python.org/downloads/)
 
@@ -92,6 +95,9 @@ Here we have screenshots of the game in progress.
 ### Directory Structure
 Our code is structured with the `main.py`, `README.md`, and `LICENSE.txt` at the root directory and the rest of the source code and assests can be found in the respective folders.
 
+- `src`: Holds all the python modules to make the game
+- `assets`: Holds all the 
+
 ### Code Structure
 
 The code that resides in the `src` folder is broken up into the following files.
@@ -100,8 +106,33 @@ The code that resides in the `src` folder is broken up into the following files.
 | ------------------------------ |-----------------------|:------:|
 | [AIPlayer.py](src/AIPlayer.py) | Holds the classes for the easy and hard AI. Each one is inherited from the abstract AIPlayer class.    | 134    |
 | [board.py](src/board.py) | Here we have the class that holds the logic for the board. Some of the methods that are included check if the board is full. If a cell is valid and so on.    | 219   |
-| [button.py](src/button.py) | Class to have a button. These buttons have     | 86   |
+| [button.py](src/button.py) | Class that creates a button for the gui. Each button has a color, text, and font. Uses `Rect` class to create the button. | 86   |
+| [gui.py](src/gui.py) | Holds all the visuals for the game. In the initializer we start the `init` function from the pygame module. Here we have the start game function and end game function.  | 106   |
+| [inGame.py](src/inGame.py) | Creates all the buttons needed for the game. This class will do the following such as getting the colour of the button to the screen.  | 106   |
 
+#### AI Functions
+
+The below function is found in the [AIPlayer.py](src/AIPlayer.py) file. The function is called the decision_function.
+
+```python
+if self.board.is_board_full():
+    return None
+
+# Scores and Indicies
+indices = self.board.move_options()
+scores = {}
+
+for i in range(0, len(indices)):
+    scores.setdefault(indices[i], self.all_path_scores(indices[i]))
+if len(scores) < 1 : 
+    return None
+print("Scores: " +str(scores))
+
+# Returns the interperted scores that is sorted
+return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
+```
+
+## Individual Contriburions
 
 ## Additional Information
 
