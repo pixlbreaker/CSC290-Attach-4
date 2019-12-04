@@ -27,10 +27,10 @@ class AIPlayer(Player):
         self.colour = colour
         self.board = board
         
-    def move(self):
+    def move(self) -> None:
         super.move()
 
-    def decision_function(self):
+    def decision_function(self) -> None:
         return
 
 
@@ -39,7 +39,7 @@ class AIEasy(AIPlayer):
     """The class AIEasy implements the easy diificulty level
     mode and makes moves based on random number generation. 
     """
-    def decision_function(self):
+    def decision_function(self) -> int:
         options = self.board.move_options()
         if options == [] : return None
         index = options[int(random() * 10) % len(options)] # get valid index in options
@@ -51,7 +51,7 @@ class AIHard(AIPlayer):
     mode. The class is based off of an adaptation of the 
     optimal solution to Connect 4.
     """
-    def decision_function(self):
+    def decision_function(self) -> int:
         """Computes the index to drop the next disc in. More specifically
         the function calculates a list of all potential next moves and 
         calculates the path score in each direction (check get_path_scores).
@@ -74,7 +74,7 @@ class AIHard(AIPlayer):
         return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 
 
-    def all_path_scores(self, index: Tuple[int, int]):
+    def all_path_scores(self, index: Tuple[int, int]) -> int:
         """ Computes the lengths of every path (a path is defined as a diagonal,
         horizontal or vertical arrangement of consecutive discs of the same
         colour) of a given index in the board attribute.
@@ -89,7 +89,7 @@ class AIHard(AIPlayer):
                 path_scores += self.get_path_score(index, x_delta, y_delta)
         return path_scores
 
-    def get_path_score(self, index: Tuple[int, int], x_delta, y_delta) -> 0:
+    def get_path_score(self, index: Tuple[int, int], x_delta, y_delta) -> int:
         """ Traverses a path in direction of x_delta and y_delta . 
         ======== Parameters ==========
 
@@ -133,7 +133,7 @@ class AIHard(AIPlayer):
                 break
         return score 
 
-    def interpret_scores(self, sorted_scores):
+    def interpret_scores(self, sorted_scores)  -> int:
         """ Return the highest scoring column from scorted scores.
         In the case of a tie in columns, return the column closest to
         the middle of the board.

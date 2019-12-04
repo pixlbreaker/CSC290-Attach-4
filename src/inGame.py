@@ -62,7 +62,7 @@ class InGame:
 
     """
 
-    def __init__(self, gui, mode: Mode):
+    def __init__(self, gui, mode: Mode) -> None:
         """
         Creates a button with attributes
 
@@ -91,9 +91,9 @@ class InGame:
 
         if (self.mode == Mode.Easy) : self.opponent = AIEasy('R',self.board)
         elif (self.mode == Mode.Hard) : self.opponent = AIHard('R', self.board)
-        else : self.opponent = PlayerHuman(self.board, "Y")
+        else : self.opponent = PlayerHuman("R",self.board)
 
-    def display(self, screen: pygame.Surface):
+    def display(self, screen: pygame.Surface) -> None:
         """
         Displays the button with the text centered
         """
@@ -111,7 +111,7 @@ class InGame:
             self.draw_piece(screen, -1, self.current_col,
                             self.get_piece_color(self.board.get_whos_turn()))
 
-    def draw_grid(self, screen):
+    def draw_grid(self, screen) -> None:
         """
         Draws the game board
         """
@@ -123,7 +123,7 @@ class InGame:
                 self.draw_piece(screen, row, col, self.get_piece_color(
                     self.board.get_grid()[row][col]))
 
-    def get_piece_color(self, player):
+    def get_piece_color(self, player: Player) -> None:
         """
         Returns piece colour of the given player
         """
@@ -135,7 +135,7 @@ class InGame:
 
         return EMPTY_COLOR
 
-    def get_ghost_color(self, player):
+    def get_ghost_color(self, player) -> None:
         """
         Returns the colour of the given ghost
         """
@@ -147,7 +147,7 @@ class InGame:
 
         return EMPTY_COLOR
 
-    def draw_piece(self, screen, row, col, fill_color):
+    def draw_piece(self, screen, row, col, fill_color) -> None:
         """
         Draws the coloured piece on the board
         """
@@ -168,7 +168,7 @@ class InGame:
                               self.square_size // 2, fill_color)
 
 
-    def update(self, event):
+    def update(self, event) -> None:
         if event.type == pygame.MOUSEBUTTONDOWN \
                 and (event.button == 1 or event.button == 3):
 

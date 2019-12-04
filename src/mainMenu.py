@@ -33,7 +33,7 @@ class MainMenu:
 
     """
 
-    def __init__(self, gui):
+    def __init__(self, gui) -> None:
         """
         Creates a button with attributes
 
@@ -97,7 +97,7 @@ class MainMenu:
         self.buttons.append(hard_button)
         self.buttons.append(end_game_button)
         
-    def display(self, screen: pygame.Surface):
+    def display(self, screen: pygame.Surface) -> None:
         """
         Displays the button with the text centered
         """
@@ -107,7 +107,7 @@ class MainMenu:
         for button in self.buttons:
             button.display(screen)
 
-    def update(self, event):
+    def update(self, event) -> None:
         """
         Executes the function (on_click) when the button is pressed
         """

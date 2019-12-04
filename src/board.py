@@ -208,7 +208,7 @@ class Board:
         """
         return self._grid
 
-    def get_whos_turn(self):
+    def get_whos_turn(self) -> str:
         """
         Returns the current move of the players colour
         """
