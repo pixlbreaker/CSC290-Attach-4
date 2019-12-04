@@ -49,13 +49,13 @@ class Button:
         self.set_text(text)
         self.is_hovered = False
 
-    def set_text(self, text: str):
+    def set_text(self, text: str) -> None:
         """
         Sets the text on the button
         """
         self.text_image = self.font.render(text, True, (0, 0, 0))
 
-    def display(self, screen: pygame.Surface):
+    def display(self, screen: pygame.Surface) -> None:
         """
         Displays the button with the text centered
         """
@@ -70,7 +70,7 @@ class Button:
                 screen.fill((180, 180, 180), self.rect,
                             pygame.BLEND_RGB_MULT)
 
-    def update(self, event):
+    def update(self, event) -> None:
         """
         Executes the function (on_click) when the button is pressed
         """
