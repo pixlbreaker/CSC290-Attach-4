@@ -29,7 +29,7 @@ Once you start up the game you are met with the main menu.
 
 ![Main Menu](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/titlepage.png "Main Menu")
 
-This is a turn-based game, meaning that each player has a turn when they make their move. Each move consists of selecting a row to drop a chip in.
+This is a **turn-based game**, meaning that each player has a turn when they make their move. Each move consists of selecting a column to drop a chip in. This is done by selecting which column with the mouse and clicking to confirm the selection.
 
 In this specific implementation we use mouse's position to determine where to drop the chip.
 
@@ -96,11 +96,11 @@ Here we have screenshots of the game in progress.
 Our code is structured with the `main.py`, `README.md`, and `LICENSE.txt` at the root directory and the rest of the source code and assests can be found in the respective folders.
 
 - `src`: Holds all the python modules to make the game
-- `assets`: Holds all the 
+- `assets`: Holds all the assets for the game
 
 ### Code Structure
 
-The code that resides in the `src` folder is broken up into the following files.
+The code that resides in the `src` folder is broken up into the following files. Here are some of those files and the functionality of what those files do.
 
 | File Name                      | Description           |  Lines |
 | ------------------------------ |-----------------------|:------:|
@@ -112,7 +112,7 @@ The code that resides in the `src` folder is broken up into the following files.
 
 #### AI Functions
 
-The below function is found in the [AIPlayer.py](src/AIPlayer.py) file. The function is called the decision_function.
+The below function is found in the [AIPlayer.py](src/AIPlayer.py) file. The function is called the decision_function. It is used by the HardAI to help determine where is the best possible spot to place down a chip.
 
 ```python
 if self.board.is_board_full():
