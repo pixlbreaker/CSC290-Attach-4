@@ -133,6 +133,11 @@ return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), 
 ```
 
 ## Individual Contributions
+### Michael Skotar
+For this project my role was more administrative. I worked on the documentation, setting up the github repository and finding the license. I wanted the README.md to be the central location that held all the information for the project. This included installation, code structure, and dependancies.
+
+As for the project I made small changes which included spelling errors or documentation. I also linked the AI modes to the existing project. Here I used the existing code as a guide to patch in the extra gamemodes.
+
 
 ## Additional Information
 
