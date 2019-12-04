@@ -138,6 +138,21 @@ For this project my role was more administrative. I worked on the documentation,
 
 As for the project I made small changes which included spelling errors or documentation. I also linked the AI modes to the existing project. Here I used the existing code as a guide to patch in the extra gamemodes.
 
+### Michael De Lisio
+My role in this project mostly entailed developing the logic and writing the code for the AIPlayer module. This involved
+developing a organized class structure that could easily interface with the gui, board and inGame modules. It also 
+involved devising a reasonable strategy, within the alloted time and resources available, to develope a fun and competitive
+artificial player to play against.
+
+Since, as a group we decided to mostly use object oriented programming structure, I followed this model for consistency and
+so that each module could interface more seemlessly with each other. The AIPlayer abstract class defines an abstract method "decision_function()", which determines the AIPlayer's (of some difficulty level) next move; specifically, it determines
+and returns a valid index into the board matrix (a tuple of integers representing a row and column respectively) based on
+some algorithm. 
+
+The AIEasy and AIHard difficulty levels both implemented different decision_functions. AIEasy implements the decision function
+using random number generation. AIHard's implementation is a little more intuitive. The inspiration for this game, "Connect 4", has a known solution that involves generating all possible moves and scoring them accordingly. This known solution, was neither within the scope of our implementation or resources to attempt. Therefore, the AIHard uses an adaptation of this solution to implement its decision_function. I wrote a more detailed summary of the AIHard algorithm used in the "AI Functions" section within this file. Other than the implementation of the AIPlayer module, my influence on other modules was 
+limited (this was agreed upon by design) and my contributions to this README.txt document was soley to the "AI Functions"
+section, since we assigned a group responsible for the administrative tasks such writing the README.txt, licensing, etc.
 
 ## Additional Information
 
