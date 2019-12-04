@@ -7,6 +7,7 @@ from src.board import *
 from src.gui import *
 from src.util import *
 from src.AIPlayer import *
+from src.PlayerHuman import *
 from typing import Tuple
 import pygame
 from pygame import Rect
@@ -52,14 +53,13 @@ class InGame:
             button has been pressed
         """
         self.gui = gui
-
         self.rows = 7
         self.cols = 6
         self.padding = 10
         self.square_size = 50
         self.current_col = -1
         self.mode = mode
-       
+        
 
         self.board = Board(self.rows, self.cols)
 
@@ -71,7 +71,7 @@ class InGame:
 
         if (self.mode == Mode.Easy) : self.opponent = AIEasy('R',self.board)
         elif (self.mode == Mode.Hard) : self.opponent = AIHard('R', self.board)
-        else : self.opponent = None
+        else : self.opponent = PlayerHuman(self.board, "Y")
 
     def display(self, screen: pygame.Surface):
         """
@@ -147,17 +147,6 @@ class InGame:
         gfxdraw.filled_circle(screen, pos[0], pos[1],
                               self.square_size // 2, fill_color)
 
-    # def update(self, event):
-    #     """
-    #     Executes the function (on_click) when the button is pressed
-    #     """
-    #     if (self.mode == Mode.Two_Player):
-    #         return self.update_two_player(event)
-    #     elif (self.mode == Mode.Easy):
-    #         return self.update_easy_mode(event)
-    #     else : 
-    #         return self.update_hard_mode(event)
-
 
     def update(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN \
@@ -169,7 +158,7 @@ class InGame:
                 if result != " " or self.board.is_board_full():
                     print("WINNER", result)
                     self.gui.goto_main_menu()
-                if self.opponent != None :
+                if self.mode != Mode.Two_Player:
                     opp_move = self.opponent.decision_function()[1]
                     if self.current_col != -1 and self.board.drop_piece( \
                         self.board.get_whos_turn(), opp_move):
