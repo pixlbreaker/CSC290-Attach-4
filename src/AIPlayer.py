@@ -64,7 +64,7 @@ class AIHard(AIPlayer):
         for i in range(0, len(indices)):
             scores.setdefault(indices[i], self.all_path_scores(indices[i]))
         if len(scores) < 1 : return None
-        print("Scores: " +str(scores))
+        
         return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 
 
@@ -125,7 +125,7 @@ class AIHard(AIPlayer):
         the middle of the board.
         """
         highest, tied = sorted_scores[0][1], 0
-        print("sorted: "+str(sorted_scores))
+        
         for i in range(1, len(sorted_scores)):
             if (highest != sorted_scores[i][1]):
                break
