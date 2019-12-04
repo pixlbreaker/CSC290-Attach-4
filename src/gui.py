@@ -13,22 +13,21 @@ class Gui:
     """
     A class that creates a visual representation of the game Attach 4.
 
-    ======Public Attributes======
+    === Public Attributes ===
     width:
         The width of the screen.
     height:
         The height of the screen.
-
-    ======Private Attributes======
-    _screen:
-        The screen of the game.
-    _icon:
-        The icon for the game.
-    _board:
-        The Board for the game.
-    _current_view:
-        The screen currently being displayed
     """
+    # === Private Attributes ===
+    # _screen:
+    #   The screen of the game.
+    # _icon:
+    #   The icon for the game.
+    # _board:
+    #   The Board for the game.
+    # _current_view:
+    #   The screen currently being displayed
 
     def __init__(self, width=800, height=600, board=Board(7, 8)) -> None:
         """
