@@ -132,7 +132,7 @@ print("Scores: " +str(scores))
 return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 ```
 
-## Individual Contriburions
+## Individual Contributions
 
 ## Additional Information
 
