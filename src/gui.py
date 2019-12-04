@@ -1,7 +1,7 @@
 """
 === Module description ===
-This module's job is to run the entire
-gui for the attach 4 game
+This module's job is to create and run the entire
+gui for the current Attach 4 game.
 """
 from src.mainMenu import *
 from src.inGame import *
@@ -11,7 +11,7 @@ import pygame
 
 class Gui:
     """
-    A class that creates the visual aspect of the game Attach 4.
+    A class that creates a visual representation of the game Attach 4.
 
     ======Public Attributes======
     width:
@@ -24,10 +24,6 @@ class Gui:
         The screen of the game.
     _icon:
         The icon for the game.
-    _p1:
-        Player 1.
-    _p2:
-        Player 2
     _board:
         The Board for the game.
     _current_view:
@@ -36,8 +32,7 @@ class Gui:
 
     def __init__(self, width=800, height=600, board=Board(7, 8)) -> None:
         """
-        Initialize a screen with dimensions (width, height),
-        then
+        Initialize a screen with dimensions (width, height), and create a board.
         """
         pygame.init()
         
