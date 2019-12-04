@@ -37,6 +37,26 @@ class InGame:
         button has been pressed .
     font:
         The font of the text on the button
+        gui:
+        The gui for the game
+    rows:
+        The rows for the game
+    cols:
+        The columns for the game
+    current_col:
+        The current column
+    padding:
+        Padding to be used as spacing
+    square_size:
+        Baseline for token size
+    mode:
+        The mode of the game
+    board:
+        The board for the game
+    grid_rect:
+        A grid version of the board used for visuals
+    opponent:
+        The opponent for the game
 
     ======Private Attributes======
 
