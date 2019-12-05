@@ -153,10 +153,10 @@ the best option would be to create a score object for each player, then update i
 would be the go-to files.
 
 ### An End Screen
-Currently, after a player win, the game goes directly back to the main menu. This might not be preferable to some players as you would not be 
+Currently, after a player wins, the game goes directly back to the main menu. This might not be preferable to some players as they would not be 
 able to see the board once the game has end. By adding an end screen, players could see the board and be given options to either play again or
 exit the game. To achieve this, creating a new screen that is displayed once a player has won would be the best course of action, meaning
-a new file, likely named GameOver.py, would be needed along with some additional work in gui.py 
+a new file, likely named GameOver.py, would be needed along with some additional work in gui.py.
 
 ## Individual Contributions
 ### Michael Skotar
@@ -204,9 +204,9 @@ After redoing the gui, the visual aspect was greatly improved and add functional
 issue of adding game modes such as player vs player and player vs ai, so I asked for assistance from another groupmate. Once my groupmate finished his improvements
 to the gui, I made minor adjustments to the new files to improve overall design and structure. 
 
-As for README.md, I contributed by providing gif's of the game's playback for both Player vs Player and Player vs AIHard, as well as adding
+As for README.md, I contributed by providing gifs of the game's playback for both Player vs Player and Player vs AIHard, as well as adding
 two possible extensions of our game in the "Extend the Game" section. My contributions to README.md
-were minimal as a single group member focused on the administrative aspect of the project, including README.md
+were minimal as a single group member focused on the administrative aspect of the project, including README.md.
 
 ## Additional Information
 
