@@ -136,6 +136,12 @@ One way to add onto our game is by creating new types of players. This can be do
 on what kind of player you're trying to create. For example, you could make a player that will try to win only by getting 4 discs in a diagonal instead of a row or column. You would 
 create an algorithm that trys to get 4 discs in a diagonal, and then add it to the move method.
 
+### Adding a timed mode
+Sometimes when playing Attach 4 with friends, they might take really long to decide where they want to make their move. A solution to this is creating a timed mode
+where each player must make their move in a certain amount of time. If the player takes too long, then their turn could be skipped. The timer could start at the as soon
+as the game is started and reset every time a player makes a move. It would make sense to implement this timer in gui.py or inGame.py as these classes deal with creating
+the interface and continually updating it.
+
 ## Individual Contributions
 ### Michael Skotar
 For this project my role was more administrative. I worked on the documentation, setting up the github repository and finding the license. I wanted the README.md to be the central location that held all the information for the project. This included installation, code structure, and dependancies.
