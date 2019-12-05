@@ -4,7 +4,7 @@
 1. Introduction
 2. How to Play
 3. Installation
-4. Screenshots
+4. Screenshots and Gameplay
 5. Documentation
 6. Individual Contributions
 7. Additional Information
@@ -41,7 +41,7 @@ First we will install the game files from the releases tab
 ### Releases 💾
 - Easiest way to get the game is from the releases page found [here](https://github.com/pixlbreaker/CSC290-Attach-4/releases)
 
-- If not you can download the github repository with the above link.
+- If not, you can download the github repository with the link below.
 
     ```bash
     $ git clone https://github.com/pixlbreaker/CSC290-Attach-4.git
@@ -177,7 +177,7 @@ The architecture of implementing an abstract class was then used by another grou
 by giving examples of how to extend our game.
 
 ### Ravnit Lotay
-My role for this project concentrated primarily on the visual aspect of the game. I designed the initial gui for the game in gui.py, then
+My role for this project concentrated primarily on the visual aspect of the game. I designed the initial gui in gui.py, then
 recieved assistance from a fellow groupmate to further developing the gui. Initially, I created a basic gui with a simple screen, board, and player tokens,
 however, when I began thinking about more complex aspects of the gui, I realized I would need help. The first realization occured while working with pygame 
 as it was more complex than I initally thought. Because of the complexity, I decided to redo the gui in a more simplistic way, using pygame more effectively.
@@ -186,7 +186,7 @@ issue of adding game modes such as player vs player and player vs ai, so I asked
 to the gui, I made minor adjustments to the new files to improve overall design and structure. 
 
 As for README.md, I contributed by providing gif's of the game's playback for both Player vs Player and Player vs AIHard. My contributions to README.md
-were minimal as a single group member focuesed on the administrative aspect of the project, including README.md
+were minimal as a single group member focused on the administrative aspect of the project, including README.md
 
 ## Additional Information
 
