@@ -176,6 +176,13 @@ I then implemented this abstract class by creating the PlayerHuman class. This s
 The architecture of implementing an abstract class was then used by another group member to create the AI players. I also contributed to README.md 
 by giving examples of how to extend our game.
 
+### Tomasz Cieslak
+I primarily contributed to the creation of the [board.py](src/board.py), as well as the refactoring of the game [gui.py](src/gui.py). The board class is essential in order to create and edit the game board. The refactoring of the GUI allowed us to more easily implement the features we plan on adding, instead of implementing all our code in one large ``` .py``` file.
+
+My [board.py](src/board.py) implementation allows us the ability to drop pieces, check if the game has ended and other various methods that are useful to comunicate with the game board. Some methods that I created include: ```drop_piece```, ```check_connected```, ```drop_piece```,  ```is_full```, etc. This class is essential in order to create a fully functional board game.
+
+The GUI refactoring allowed my team to better use object oriented programming, where buttons and other features can more easily be implemented. This refactoring split up our previous gui into 3 new class files, which now include: [gui.py](src/gui.py), [inGame.py](src/inGame.py) and [mainMenu.py](src/mainMenu.py). This refractoring of code is convenient since it allows us to more easily implement the features we require.
+
 ### Ravnit Lotay
 My role for this project concentrated primarily on the visual aspect of the game. I designed the initial gui in gui.py, then
 recieved assistance from a fellow groupmate to further developing the gui. Initially, I created a basic gui with a simple screen, board, and player tokens,
