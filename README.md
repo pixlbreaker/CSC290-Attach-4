@@ -1,4 +1,4 @@
-# CSC290 - Attach 4
+﻿# CSC290 - Attach 4
 
 ## Content
 1. Introduction
@@ -129,6 +129,12 @@ if len(scores) < 1 : return None
 # return the highest scoring index
 return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 ```
+## Extending the game
+Some features of this game were out-of-scope due to our time frame. We encourage you add your own cool and exciting feature to make the game even more fun! Here are some examples:
+### Creating new players
+One way to add onto our game is by creating new types of players. This can be done by creating a sub class of the abstract Player class. All you have to do is implement the move method depending
+on what kind of player you're trying to create. For example, you could make a player that will try to win only by getting 4 discs in a diagonal instead of a row or column. You would 
+create an algorithm that trys to get 4 discs in a diagonal, and then add it to the move method.
 
 ## Individual Contributions
 ### Michael Skotar
@@ -151,6 +157,14 @@ The AIEasy and AIHard difficulty levels both implemented different decision func
 using random number generation. AIHard's implementation is a little more intuitive. The inspiration for this game, "Connect 4", has a known solution that involves generating all possible moves and scoring them accordingly. This known solution, was neither within the scope of our implementation or resources to attempt. Therefore, the AIHard uses an adaptation of this solution to implement its ```decision_function```. I wrote a more detailed summary of the AIHard algorithm used in the "AI Functions" section within this file. Other than the implementation of the [AIPlayer.py](src/AIPlayer.py) module, my influence on other modules was 
 limited (this was agreed upon by design) and my contributions to this README.md document was soley to the "AI Functions"
 section, since we assigned a group responsible for the administrative tasks such writing the README.md, licensing, etc.
+
+### Niral Patel
+In this project, I was responsible for creating the architecture for all the players, as well as implementing the PlayerHuman class. 
+I decided to first create an abstract class called Player. This class has an unimplemented move method which sub classes of Player should implement. 
+This class also contained implemented methods like get_color() since the implementation of this method would be the same for all player types.
+I then implemented this abstract class by creating the PlayerHuman class. This sub class implemented the move method and could now be initialized. 
+The architecture of implementing an abstract class was then used by another group member to create the AI players. I also contributed to README.md 
+by giving examples of how to extend our game.
 
 ## Additional Information
 
