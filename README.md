@@ -10,7 +10,7 @@
 7. Additional Information
 
 ## Introduction
-This is a connect-4 inspired game built with python and pygame for our **CSC 290: Communication Skills for Computer Scientists**. Our team members include:
+This is a Connect-4 inspired game built with python and pygame for our **CSC 290: Communication Skills for Computer Scientists**. Our team members include:
 
 - Niral Patel
 - Tomasz Cieslak
@@ -61,7 +61,7 @@ This game uses python as the main language. In order to play you need to have py
     ```
 
 #### Linux
-- For linux distributions, such as Debian and Ubuntu use the package manager system that comes with the system. For example:
+- For linux distributions such as Debian and Ubuntu, use the package manager system that comes with the system. For example:
 
     ```bash
     sudo apt-get install python3
@@ -76,19 +76,23 @@ Pygame can be installed by using a package manager. The most commonly used one c
 *If not follow [this](https://pip.pypa.io/en/stable/installing/) recommended guide.*
 
 #### Pygame
-- Once pip is now installed on your system you can install pygame.
-Run this following command to install pygame.
+- Once pip is installed on your system, you can install pygame.
+Run the following command to install pygame.
 
     ```bash
     pip install pygame
     ```
 
-## Screenshots 👾
+## Screenshots and Gameplay 👾
 Here we have screenshots of the game in progress. 
 
 ![Screenshot_1](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/gameplay_1.png "Gameplay Picture 1")
 
 ![Screenshot_2](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/gameplay_2.png "Gameplay Picture 2")
+
+![Gif1](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/Gif1.gif "Gif1")
+
+![Gif2](https://github.com/pixlbreaker/CSC290-Attach-4/blob/master/assets/screenshots/Gif2.gif "Gif2")
 
 ## Documentation 📚
 
@@ -134,7 +138,7 @@ Some features of this game were out-of-scope due to our time frame. We encourage
 ### Creating new players
 One way to add onto our game is by creating new types of players. This can be done by creating a sub class of the abstract Player class. All you have to do is implement the move method depending
 on what kind of player you're trying to create. For example, you could make a player that will try to win only by getting 4 discs in a diagonal instead of a row or column. You would 
-create an algorithm that trys to get 4 discs in a diagonal, and then add it to the move method.
+create an algorithm that tries to get 4 discs in a diagonal, and then add it to the move method.
 
 ### Adding a timed mode
 Sometimes when playing Attach 4 with friends, they might take really long to decide where they want to make their move. A solution to this is creating a timed mode
@@ -171,6 +175,18 @@ This class also contained implemented methods like get_color() since the impleme
 I then implemented this abstract class by creating the PlayerHuman class. This sub class implemented the move method and could now be initialized. 
 The architecture of implementing an abstract class was then used by another group member to create the AI players. I also contributed to README.md 
 by giving examples of how to extend our game.
+
+### Ravnit Lotay
+My role for this project concentrated primarily on the visual aspect of the game. I designed the initial gui for the game in gui.py, then
+recieved assistance from a fellow groupmate to further developing the gui. Initially, I created a basic gui with a simple screen, board, and player tokens,
+however, when I began thinking about more complex aspects of the gui, I realized I would need help. The first realization occured while working with pygame 
+as it was more complex than I initally thought. Because of the complexity, I decided to redo the gui in a more simplistic way, using pygame more effectively.
+After redoing the gui, the visual aspect was greatly improved and add functionality was added for playback. After redoing the board, however, I was met with the
+issue of adding game modes such as player vs player and player vs ai, so I asked for assistance from another groupmate. Once my groupmate finished his improvements
+to the gui, I made minor adjustments to the new files to improve overall design and structure. 
+
+As for README.md, I contributed by providing gif's of the game's playback for both Player vs Player and Player vs AIHard. My contributions to README.md
+were minimal as a single group member focuesed on the administrative aspect of the project, including README.md
 
 ## Additional Information
 
