@@ -14,6 +14,8 @@ class AIPlayer(Player):
     === Public Attributes ===
     colour:
         The colour of this player's discs.
+    board:
+        The game board
     """
 
     def __init__(self, colour, board):
