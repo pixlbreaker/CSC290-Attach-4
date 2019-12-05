@@ -133,18 +133,30 @@ if len(scores) < 1 : return None
 # return the highest scoring index
 return self.interpret_scores(sorted(scores.items(), key=operator.itemgetter(1), reverse=True))
 ```
-## Extending the game
+## Extending the Game
 Some features of this game were out-of-scope due to our time frame. We encourage you add your own cool and exciting feature to make the game even more fun! Here are some examples:
-### Creating new players
+### Creating New Players
 One way to add onto our game is by creating new types of players. This can be done by creating a sub class of the abstract Player class. All you have to do is implement the move method depending
 on what kind of player you're trying to create. For example, you could make a player that will try to win only by getting 4 discs in a diagonal instead of a row or column. You would 
 create an algorithm that tries to get 4 discs in a diagonal, and then add it to the move method.
 
-### Adding a timed mode
+### Adding a Timed Mode
 Sometimes when playing Attach 4 with friends, they might take really long to decide where they want to make their move. A solution to this is creating a timed mode
 where each player must make their move in a certain amount of time. If the player takes too long, then their turn could be skipped. The timer could start at the as soon
 as the game is started and reset every time a player makes a move. It would make sense to implement this timer in gui.py or inGame.py as these classes deal with creating
 the interface and continually updating it.
+
+### Tracking Scores
+When playing multiple consecutive games, players might forget how many times they won or lost. By adding a score tracker, this issue can
+be quickly resolved. A score tracker would allow each player to see how many times they won or lost against another player. To implement this,
+the best option would be to create a score object for each player, then update it each time a player wins. Therefore, working in gui.py or inGame.py 
+would be the go-to files.
+
+### An End Screen
+Currently, after a player win, the game goes directly back to the main menu. This might not be preferable to some players as you would not be 
+able to see the board once the game has end. By adding an end screen, players could see the board and be given options to either play again or
+exit the game. To achieve this, creating a new screen that is displayed once a player has won would be the best course of action, meaning
+a new file, likely named GameOver.py, would be needed along with some additional work in gui.py 
 
 ## Individual Contributions
 ### Michael Skotar
@@ -192,7 +204,8 @@ After redoing the gui, the visual aspect was greatly improved and add functional
 issue of adding game modes such as player vs player and player vs ai, so I asked for assistance from another groupmate. Once my groupmate finished his improvements
 to the gui, I made minor adjustments to the new files to improve overall design and structure. 
 
-As for README.md, I contributed by providing gif's of the game's playback for both Player vs Player and Player vs AIHard. My contributions to README.md
+As for README.md, I contributed by providing gif's of the game's playback for both Player vs Player and Player vs AIHard, as well as adding
+two possible extensions of our game in the "Extend the Game" section. My contributions to README.md
 were minimal as a single group member focused on the administrative aspect of the project, including README.md
 
 ## Additional Information
