@@ -10,35 +10,37 @@ from pygame import Rect
 
 
 class Button:
-    """A class that creates the buttons for the gui
-
-        ======Public Attributes======
-        rect:
-            The button object, with width, height and position
-        colour:
-            The colour of the button.
-        text:
-            The text on the button.
-        on_click:
-            The function that will exectute when the
-            button has been pressed .
-        font:
-            The font of the text on the button
-
-        ======Private Attributes======
-
     """
+    A class that creates the buttons for the gui.
 
-    def __init__(self, rect: Rect, on_click,
-                 colour: Tuple[int, int, int] = None, text: str = ''):
+    === Public Attributes ===
+    rect:
+        The button object, with width, height and position
+    colour:
+        The colour of the button.
+    text:
+        The text on the button.
+    on_click:
+        The function that will execute when the button has
+        been pressed.
+    font:
+        The font of the text on the button
+    """
+    rect: Rect
+    colour: Tuple[int, int, int]
+    text: str
+    on_click: callable
+    font: pygame.font
+
+    def __init__(self, rect: Rect, on_click: callable,
+                 colour: Tuple[int, int, int] = None, text: str = '') -> None:
         """
-        Creates a button with attributes
+        Creates a button with the specified attributes.
 
         Note:
-            If colour is none then the button is invisible
-
-            on_click is a function that will exectute when the
-            button has been pressed
+            - If colour is none, then the button is invisible.
+            - on_click is a function that will execute when the
+              button has been pressed.
         """
         self.rect = rect
         self.colour = colour
@@ -49,15 +51,15 @@ class Button:
         self.set_text(text)
         self.is_hovered = False
 
-    def set_text(self, text: str):
+    def set_text(self, text: str) -> None:
         """
-        Sets the text on the button
+        Sets the text on the button.
         """
         self.text_image = self.font.render(text, True, (0, 0, 0))
 
-    def display(self, screen: pygame.Surface):
+    def display(self, screen: pygame.Surface) -> None:
         """
-        Displays the button with the text centered
+        Displays the button with the text centered.
         """
         if self.colour is not None:
             screen.fill(self.colour, self.rect)
@@ -70,9 +72,9 @@ class Button:
                 screen.fill((180, 180, 180), self.rect,
                             pygame.BLEND_RGB_MULT)
 
-    def update(self, event):
+    def update(self, event) -> None:
         """
-        Executes the function (on_click) when the button is pressed
+        Executes the function (on_click) when the button is pressed.
         """
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(event.pos):

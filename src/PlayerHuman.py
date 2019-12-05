@@ -21,7 +21,7 @@ class PlayerHuman(Player):
     colour: str
     _game_board: Board
 
-    def __init__(self, game_board: Board, colour: str):
+    def __init__(self, colour: str, game_board: Board):
         """
         Creates a new human player with the specified disc colour
         and game board.

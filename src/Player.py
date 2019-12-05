@@ -3,7 +3,7 @@
 This module contains an abstract class for a player.
 """
 from abc import ABC
-import board
+from src.board import *
 
 
 class Player:
@@ -19,7 +19,7 @@ class Player:
     # _game_board
     #   the board that this player is playing on.
     colour: str
-    _game_board: board
+    _game_board: Board
 
     def move(self) -> bool:
         """

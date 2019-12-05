@@ -1,7 +1,7 @@
 """
 === Module description ===
-This module's job is to run the entire
-gui for the attach 4 game
+This module's job is to create and run the entire
+gui for the current Attach 4 game.
 """
 from src.mainMenu import *
 from src.inGame import *
@@ -11,33 +11,27 @@ import pygame
 
 class Gui:
     """
-    A class that creates the visual aspect of the game Attach 4.
+    A class that creates a visual representation of the game Attach 4.
 
-    ======Public Attributes======
+    === Public Attributes ===
     width:
         The width of the screen.
     height:
         The height of the screen.
-
-    ======Private Attributes======
-    _screen:
-        The screen of the game.
-    _icon:
-        The icon for the game.
-    _p1:
-        Player 1.
-    _p2:
-        Player 2
-    _board:
-        The Board for the game.
-    _current_view:
-        The screen currently being displayed
     """
+    # === Private Attributes ===
+    # _screen:
+    #   The screen of the game.
+    # _icon:
+    #   The icon for the game.
+    # _board:
+    #   The Board for the game.
+    # _current_view:
+    #   The screen currently being displayed
 
     def __init__(self, width=800, height=600, board=Board(7, 8)) -> None:
         """
-        Initialize a screen with dimensions (width, height),
-        then
+        Initialize a screen with dimensions (width, height), and create a board.
         """
         pygame.init()
         
@@ -60,14 +54,36 @@ class Gui:
         pygame.mixer.music.play(-1)
         self.game_loop()
 
-    def start_game(self) -> None:
+    def start_game_two_player(self) -> None:
         """
         Updates the game state so it clears the menu and starts the game
 
         Note:
             This should be envoked once, in order to start the game.
         """
-        self._current_view = InGame(self)
+        self._current_view = InGame(self, Mode.Two_Player)
+        self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
+        pygame.mixer.music.play(-1)
+
+    def start_game_easy(self) -> None:
+        """
+        Updates the game state so it clears the menu and starts the game
+
+        Note:
+            This should be envoked once, in order to start the game.
+        """
+        self._current_view = InGame(self, Mode.Easy)
+        self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
+        pygame.mixer.music.play(-1)
+
+    def start_game_hard(self) -> None:
+        """
+        Updates the game state so it clears the menu and starts the game
+
+        Note:
+            This should be envoked once, in order to start the game.
+        """
+        self._current_view = InGame(self, Mode.Hard)
         self._GAME_MUSIC = pygame.mixer.music.load("assets/DuringPlay.wav")
         pygame.mixer.music.play(-1)
         
